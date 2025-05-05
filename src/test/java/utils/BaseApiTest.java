@@ -5,10 +5,12 @@ import io.restassured.RestAssured;
 import org.testng.annotations.BeforeClass;
 
 public class BaseApiTest {
+    protected ConfigReader configReader;
 
     @BeforeClass
     public void setup() {
-        RestAssured.baseURI = ConfigReader.get("base_url");
+        configReader = new ConfigReader("src/test/resources/config.properties");
+        RestAssured.baseURI = configReader.get("base_url");
         RestAssured.useRelaxedHTTPSValidation();
     }
 }

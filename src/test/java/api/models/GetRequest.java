@@ -1,13 +1,9 @@
 package api.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import api.dto.GetRequestDto;
 
 public class GetRequest {
-
-    @JsonProperty("limit")
     private int limit;
-
-    @JsonProperty("offset")
     private int offset;
 
     public GetRequest() {
@@ -24,23 +20,19 @@ public class GetRequest {
         return limit;
     }
 
-    public void setLimit(int limit) {
-        this.limit = limit;
-    }
-
     public int getOffset() {
         return offset;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
     }
 
     public void setOffset(int offset) {
         this.offset = offset;
     }
 
-    @Override
-    public String toString() {
-        return "GetProjectsRequest{" +
-                "limit=" + limit +
-                ", offset=" + offset +
-                '}';
+    public GetRequestDto toDto() {
+        return new GetRequestDto(this.limit, this.offset);
     }
 }

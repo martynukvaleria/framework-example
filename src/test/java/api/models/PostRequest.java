@@ -1,27 +1,14 @@
 package api.models;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import api.dto.PostRequestDto;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PostRequest {
 
-    @JsonProperty("access")
     private String access;
-
-    @JsonProperty("access_type")
     private String access_type;
-
-    @JsonProperty("code")
     private String code;
-
-    @JsonProperty("description")
     private String description;
-
-    @JsonProperty("group")
     private Integer group;
-
-    @JsonProperty("title")
     private String title;
 
     public PostRequest() {
@@ -90,15 +77,7 @@ public class PostRequest {
         this.title = title;
     }
 
-    @Override
-    public String toString() {
-        return "PostRequest{" +
-                "access='" + access + '\'' +
-                ", access_type='" + access_type + '\'' +
-                ", code='" + code + '\'' +
-                ", description='" + description + '\'' +
-                ", group='" + group + '\'' +
-                ", title='" + title + '\'' +
-                '}';
+    public PostRequestDto toDto() {
+        return  new PostRequestDto(this.access, this.access_type, this.code, this.description, this.group, this.title);
     }
 }
