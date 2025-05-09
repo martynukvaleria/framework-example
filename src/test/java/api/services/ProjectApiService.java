@@ -1,40 +1,56 @@
 package api.services;
 
-import api.models.PatchRequest;
-import api.models.PostRequest;
-import io.restassured.RestAssured;
+import api.models.PatchProjectRequestBody;
+import api.models.PostProjectRequestBody;
 import io.restassured.response.Response;
 import config.ConfigReader;
 
+import static io.restassured.RestAssured.given;
+
 public class ProjectApiService {
-    private final ConfigReader config;
-    Dotenv dotenv = Dotenv.load();
+    private final String token;
+    private final String baseUri;
+
 
     public ProjectApiService(ConfigReader config) {
-        this.config = config;
+        this.token = config.get("api_token");
+        this.baseUri = config.get("base_uri");
     }
 
-    public Response createProject(PostRequest postRequest) {
-        return RestAssured.given().log().all()
-                .header("Token", config.get("api_token"))
+    public Response createProject(PostProjectRequestBody postProjectRequestBody) {
+        return given().log().all()
+                .header("Token", token)
                 .contentType("application/json")
-                .body(postRequest)
+                .body(postProjectRequestBody)
                 .when()
-                .post(config.get("base_uri"));
+                .post(baseUri);
     }
-    public Response deleteProject(){
-        return RestAssured.given().log().all()
-                .header("Token", config.get("api_token"))
+
+    public Response deleteProject(String code) {
+        return given().log().all()
+                .header("Token", token)
                 .contentType("application/json")
                 .when()
-                .delete(config.get("base_uri") + "/TEST");
+                .delete(baseUri + "/" + code);
     }
-    public Response editProject(PatchRequest patchRequest){
-        return RestAssured.given().log().all()
-                .header("Token", config.get("api_token"))
+
+    public Response editProject(PatchProjectRequestBody projectRequestBody) {
+        return given().log().all()
+                .header("Token", token)
                 .contentType("application/json")
-                .body(patchRequest)
+                .body(projectRequestBody)
                 .when()
-                .patch(config.get("base_uri"));
+                .patch(baseUri);
+    }
+
+    public Response getProjects(int limit, int offset) {
+        return given().log().all()
+                .baseUri(baseUri)
+                .header("accept", "application/json")
+                .header("Token", token)
+                .queryParam("limit", limit)
+                .queryParam("offset", offset)
+                .when()
+                .get();
     }
 }

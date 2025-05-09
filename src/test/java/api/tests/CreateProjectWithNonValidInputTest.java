@@ -1,7 +1,6 @@
 package api.tests;
 
-import api.models.PostRequest;
-import api.services.ProjectApiService;
+import api.models.PostProjectRequestBody;
 import io.restassured.response.Response;
 import listeners.RetryAnalyzer;
 import listeners.TestListener;
@@ -17,21 +16,17 @@ public class CreateProjectWithNonValidInputTest extends BaseApiTest {
 
     @Test(retryAnalyzer = RetryAnalyzer.class)
     public void createProjectTest() {
-        String access = "t";
+        String access = null;
         String accessType = "public";
         String code = "Test_" + UUID.randomUUID();
         String description = "";
-        Integer group = 0;
-        String tittle = null;
+        Integer group = null;
+        String title = "t";
 
-        PostRequest postRequest = new PostRequest(access, accessType, code, description, group, tittle);
-        ProjectApiService projectApiService = new ProjectApiService(configReader);
+        PostProjectRequestBody postRequest = createPostProjectRequestBody(access, accessType, code, description, group, title);
         Response response = projectApiService.createProject(postRequest);
 
         response.then().statusCode(400);
-
-        String responseBody = response.getBody().asString();
-        Assert.assertTrue(responseBody.contains("errorMessage"), "Expected error message in response.");
-        Assert.assertFalse(response.jsonPath().getBoolean("status"), "Expected status=false for invalid request.");
+        Assert.assertTrue(response.jsonPath().getString("errorFields.error").contains("Project code can contain only latin alphabet symbols."));
     }
 }

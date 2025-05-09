@@ -16,18 +16,6 @@ public class ConfigReader {
     }
 
     public String get(String key) {
-        String value = properties.getProperty(key);
-
-        if (value != null && value.contains("${")) {
-            int start = value.indexOf("${") + 2;
-            int end = value.indexOf("}", start);
-            if (start > 1 && end > start) {
-                String envKey = value.substring(start, end);
-                String envValue = System.getenv(envKey);
-                return envValue != null ? envValue : "";
-            }
-        }
-
-        return value;
+        return properties.getProperty(key);
     }
 }
