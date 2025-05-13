@@ -17,6 +17,6 @@ public class CreateProjectWithValidInputTest extends BaseApiTest {
                 (null, "public", "TEST", "", null, "Test");
         Response response = projectApiService.createProject(postRequest);
 
-        response.then().statusCode(200);
+        response.then().statusCode(200); //message
     }
 }

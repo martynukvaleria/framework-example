@@ -34,13 +34,13 @@ public class ProjectApiService {
                 .delete(baseUri + "/" + code);
     }
 
-    public Response editProject(PatchProjectRequestBody projectRequestBody) {
+    public Response editProject(PatchProjectRequestBody projectRequestBody, String code) {
         return given().log().all()
                 .header("Token", token)
                 .contentType("application/json")
                 .body(projectRequestBody)
                 .when()
-                .patch(baseUri);
+                .patch(baseUri + "/" + code);
     }
 
     public Response getProjects(int limit, int offset) {

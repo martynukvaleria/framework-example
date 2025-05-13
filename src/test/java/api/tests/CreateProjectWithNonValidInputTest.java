@@ -27,6 +27,9 @@ public class CreateProjectWithNonValidInputTest extends BaseApiTest {
         Response response = projectApiService.createProject(postRequest);
 
         response.then().statusCode(400);
-        Assert.assertTrue(response.jsonPath().getString("errorFields.error").contains("Project code can contain only latin alphabet symbols."));
+        Assert.assertTrue(
+                response.jsonPath().getString("errorFields.error")
+                        .contains("Project code can contain only latin alphabet symbols.")
+        );
     }
 }

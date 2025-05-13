@@ -18,7 +18,14 @@ public class BaseApiTest {
         RestAssured.baseURI = configReader.get("base_url");
         RestAssured.useRelaxedHTTPSValidation();
     }
-    protected PostProjectRequestBody createPostProjectRequestBody(String access, String access_type, String code, String description, Integer group, String title) {
+    protected PostProjectRequestBody createPostProjectRequestBody(
+            String access,
+            String access_type,
+            String code,
+            String description,
+            Integer group,
+            String title
+    ) {
         return new PostProjectRequestBody(access, access_type, code, description, group, title);
     }
 
