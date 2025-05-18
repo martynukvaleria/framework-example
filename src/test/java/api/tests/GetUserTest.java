@@ -15,7 +15,7 @@ public class GetUserTest extends BaseApiTest {
         projectApiService.createProject(project).then().statusCode(200);
     }
 
-    @Test
+    @Test(groups = "api")
     public void getProjectsShouldReturn200() {
         Response response = projectApiService.getProjects(10, 0);
 
