@@ -1,10 +1,8 @@
 package pages.elements;
 
-import config.LocatorReader;
+import readers.LocatorReader;
 import org.openqa.selenium.WebDriver;
-import pages.elements.forms.Button;
 import pages.elements.forms.Label;
-import pages.elements.forms.TextField;
 
 public class ProjectPageElements {
     LocatorReader reader = new LocatorReader("src/test/resources/locators/projectPage.xml");

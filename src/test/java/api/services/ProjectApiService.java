@@ -3,7 +3,7 @@ package api.services;
 import api.models.PatchProjectRequestBody;
 import api.models.PostProjectRequestBody;
 import io.restassured.response.Response;
-import config.ConfigReader;
+import readers.ConfigReader;
 
 import static io.restassured.RestAssured.given;
 

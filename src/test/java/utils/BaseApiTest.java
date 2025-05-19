@@ -3,7 +3,7 @@ package utils;
 import api.models.PatchProjectRequestBody;
 import api.models.PostProjectRequestBody;
 import api.services.ProjectApiService;
-import config.ConfigReader;
+import readers.ConfigReader;
 import io.restassured.RestAssured;
 import org.testng.annotations.BeforeClass;
 

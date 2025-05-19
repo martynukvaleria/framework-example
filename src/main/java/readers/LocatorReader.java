@@ -1,6 +1,5 @@
-package config;
+package readers;
 
-import org.openqa.selenium.By;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 

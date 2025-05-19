@@ -1,6 +1,6 @@
 package utils;
 
-import config.ConfigReader;
+import readers.ConfigReader;
 import core.DriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;

@@ -1,6 +1,6 @@
 package pages.elements;
 
-import config.LocatorReader;
+import readers.LocatorReader;
 import org.openqa.selenium.WebDriver;
 import pages.elements.forms.*;
 
