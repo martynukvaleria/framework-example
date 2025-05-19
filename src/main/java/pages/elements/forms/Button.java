@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 public class Button extends BaseElement {
     DriverWrapper driver = getDriverWrapper();
 
-    public Button(String name, By locator, WebDriver webDriver) {
+    public Button(String name, String locator, WebDriver webDriver) {
         super(name, locator, webDriver);
     }
 

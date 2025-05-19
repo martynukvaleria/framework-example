@@ -25,7 +25,7 @@ public class LocatorReader {
         }
     }
 
-    public By getLocator(String xpath) {
+    public String getLocator(String xpath) {
         try {
             Node node = (Node) XPathFactory
                     .newInstance()
@@ -36,8 +36,7 @@ public class LocatorReader {
                 throw new RuntimeException("No element found for xpath: " + xpath);
             }
 
-            String locatorValue = node.getTextContent().trim();
-            return By.xpath(locatorValue);
+            return node.getTextContent().trim();
         } catch (Exception e) {
             throw new RuntimeException("Failed to get locator from XML path: " + xpath, e);
         }

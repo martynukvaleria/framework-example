@@ -1,13 +1,11 @@
 package pages.elements.forms;
 
-import core.DriverWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class TextField extends BaseElement{
-    DriverWrapper driver = getDriverWrapper();
 
-    public TextField(String name, By locator, WebDriver webDriver) {
+    public TextField(String name, String locator, WebDriver webDriver) {
         super(name, locator, webDriver);
     }
 

@@ -1,22 +1,22 @@
 package pages.elements.forms;
 
 import core.DriverWrapper;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public abstract class BaseElement {
     protected String name;
-    protected By locator;
+    protected String locator;
     protected DriverWrapper driver;
     protected WebDriver webDriver;
 
-    public BaseElement(String name, By locator, WebDriver webDriver) {
+    public BaseElement(String name, String locator, WebDriver webDriver) {
         this.name = name;
         this.locator = locator;
         this.webDriver = webDriver;
-        driver = getDriverWrapper();
+        this.driver = getDriverWrapper();
     }
+
     protected DriverWrapper getDriverWrapper() {
         if (this.webDriver instanceof DriverWrapper) {
             return (DriverWrapper) this.webDriver;
@@ -33,19 +33,22 @@ public abstract class BaseElement {
     }
 
     public void replacePartOfLocator(String placeholder, String value) {
-        if (locator instanceof By.ByXPath) {
-            String xpath = locator.toString().replaceFirst("By.xpath: ", "");
-            String updatedXpath = xpath.replace(placeholder, value);
-            this.locator = By.xpath(updatedXpath);
-        } else {
-            throw new UnsupportedOperationException("Replacement supported only for XPath locators");
-        }
+        this.locator = this.locator.replace(placeholder, value);
     }
 
-    public void waitForElementToBeVisible(){
+    public void waitForElementToBeVisible() {
         driver.waitForElementToBeVisible(locator);
     }
-    public void waitForElementToBeClickable(){
+
+    public void waitForElementToBeClickable() {
         driver.waitForElementToBeClickable(locator);
+    }
+
+    public boolean isEnabled() {
+        return getElement().isEnabled();
+    }
+
+    public String getText() {
+        return getElement().getText();
     }
 }

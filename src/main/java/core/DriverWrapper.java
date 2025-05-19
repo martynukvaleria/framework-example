@@ -21,29 +21,39 @@ public class DriverWrapper {
         return driver;
     }
 
-    public WebElement getElement(By locator) {
-        return driver.findElement(locator);
+    public WebElement getElement(String locator) {
+        return driver.findElement(By.xpath(locator));
     }
 
-    public void waitForElementToBeVisible(By locator) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    public void waitForElementToBeVisible(String locator) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
     }
 
-    public void waitForElementToBeClickable(By locator) {
-        wait.until(ExpectedConditions.elementToBeClickable(locator));
+    public void waitForElementToBeClickable(String locator) {
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
     }
 
-    public void click(By locator) {
-        driver.findElement(locator).click();
+    public void click(String locator) {
+        getElement(locator).click();
     }
 
-    public void sendKeys(By locator, String text) {
-        WebElement element = driver.findElement(locator);
+    public void sendKeys(String locator, String text) {
+        WebElement element = getElement(locator);
         element.clear();
         element.sendKeys(text);
     }
 
     public void navigateToUrl(String url){
         driver.get(url);
+    }
+
+    public void select(String locator) {
+        WebElement element = getElement(locator);
+        element.click();
+    }
+
+    public String getText(String locator){
+        WebElement element = getElement(locator);
+        return element.getText();
     }
 }

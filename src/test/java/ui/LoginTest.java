@@ -19,7 +19,7 @@ public class LoginTest extends BaseUiTest {
     }
 
     @Test(groups = "ui")
-    public void testLoginButtonVisible() {
+    public void loginTest() {
         loginPage.logIn(loginUrl, configReader.get("email"), configReader.get("password"));
         commonPage.verifyPageLoaded();
     }
