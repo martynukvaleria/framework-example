@@ -4,6 +4,9 @@ import core.DriverWrapper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.Collection;
+import java.util.List;
+
 public abstract class BaseElement {
     protected String name;
     protected String locator;
@@ -50,5 +53,9 @@ public abstract class BaseElement {
 
     public String getText() {
         return getElement().getText();
+    }
+
+    public List<WebElement> getAllElements() {
+        return driver.getAllElements(locator);
     }
 }

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.elements.CommonPageElements;
 
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 public class CommonPage {
@@ -48,5 +49,12 @@ public class CommonPage {
         commonPageElements.getAlertTxt().waitForElementToBeVisible();
         Assert.assertTrue(commonPageElements.getAlertTxt().getText().contains(message));
         commonPageElements.getCloseAlert().click();
+    }
+
+    public void verifyProjectIsDeleted(String name) {
+        driver.refreshPage();
+        commonPageElements.getProjectRow().waitForElementToBeVisible();
+        int projectsNum = commonPageElements.getProjectRow().getAllElements().size();
+        Assert.assertEquals(projectsNum, 1);
     }
 }

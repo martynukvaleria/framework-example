@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class DriverWrapper {
     private final WebDriver driver;
@@ -55,5 +56,13 @@ public class DriverWrapper {
     public String getText(String locator){
         WebElement element = getElement(locator);
         return element.getText();
+    }
+
+    public List<WebElement> getAllElements(String locator){
+        return driver.findElements(By.xpath(locator));
+    }
+
+    public void refreshPage(){
+     driver.navigate().refresh();
     }
 }
