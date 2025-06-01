@@ -1,5 +1,7 @@
 package utils;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.CommonPage;
@@ -8,8 +10,6 @@ import pages.ProjectPage;
 import readers.ConfigReader;
 import core.DriverFactory;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 
 public class BaseUiTest {
     protected ConfigReader configReader;
@@ -38,5 +38,13 @@ public class BaseUiTest {
 
     protected WebDriver getDriver() {
         return DriverFactory.getDriver();
+    }
+    public byte[] takeScreenshot() {
+        try {
+            return ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
+        } catch (Exception e) {
+            System.err.println("Screenshot capture failed: " + e.getMessage());
+            return null;
+        }
     }
 }
