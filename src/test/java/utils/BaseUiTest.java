@@ -1,5 +1,7 @@
 package utils;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import pages.CommonPage;
 import pages.LoginPage;
 import pages.ProjectPage;
@@ -17,7 +19,7 @@ public class BaseUiTest {
     protected CommonPage commonPage;
     protected ProjectPage projectPage;
 
-    @BeforeClass
+    @BeforeMethod
     public void setup() {
         configReader = new ConfigReader("src/test/resources/config.properties");
         loginUrl = configReader.get("base_url") + "/login";
@@ -29,7 +31,7 @@ public class BaseUiTest {
         projectPage = new ProjectPage(getDriver());
     }
 
-    @AfterClass
+    @AfterMethod
     public void tearDown() {
         DriverFactory.quitDriver();
     }
