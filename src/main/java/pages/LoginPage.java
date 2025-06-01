@@ -1,20 +1,19 @@
 package pages;
 
-import core.DriverWrapper;
 import org.openqa.selenium.WebDriver;
+import pages.base.BasePage;
 import pages.elements.LoginPageElements;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
     LoginPageElements loginPageElements;
-    DriverWrapper driver;
 
-    public LoginPage(WebDriver webDriver){
-        loginPageElements = new LoginPageElements(webDriver);
-        driver = new DriverWrapper(webDriver);
+    public LoginPage(WebDriver driver){
+        super(driver);
+        loginPageElements = new LoginPageElements(driver);
     }
 
     public void logIn(String url, String email, String password) {
-        driver.navigateToUrl(url);
+        driverWrapper.navigateToUrl(url);
         enterUserDetails(email, password);
     }
 

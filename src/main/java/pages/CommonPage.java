@@ -1,20 +1,18 @@
 package pages;
 
-import core.DriverWrapper;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import pages.base.BasePage;
 import pages.elements.CommonPageElements;
 
-import java.util.NoSuchElementException;
 import java.util.UUID;
 
-public class CommonPage {
+public class CommonPage extends BasePage {
     CommonPageElements commonPageElements;
-    DriverWrapper driver;
 
-    public CommonPage(WebDriver webDriver) {
-        commonPageElements = new CommonPageElements(webDriver);
-        driver = new DriverWrapper(webDriver);
+    public CommonPage(WebDriver driver) {
+        super(driver);
+        commonPageElements = new CommonPageElements(driver);
     }
 
     public void verifyPageLoaded() {
@@ -30,7 +28,7 @@ public class CommonPage {
         commonPageElements.getName().sendKeys(name);
         commonPageElements.getCode().sendKeys(code);
         if (accessType.equals("public")) {
-            commonPageElements.getPublicAccess().select();
+            commonPageElements.getAccess("public").select();
         }
         commonPageElements.getCreate().click();
     }
@@ -52,7 +50,7 @@ public class CommonPage {
     }
 
     public void verifyProjectIsDeleted(String name) {
-        driver.refreshPage();
+        driverWrapper.refreshPage();
         commonPageElements.getProjectRow().waitForElementToBeVisible();
         int projectsNum = commonPageElements.getProjectRow().getAllElements().size();
         Assert.assertEquals(projectsNum, 1);

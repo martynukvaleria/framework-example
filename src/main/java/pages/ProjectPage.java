@@ -1,16 +1,15 @@
 package pages;
 
-import core.DriverWrapper;
 import org.openqa.selenium.WebDriver;
+import pages.base.BasePage;
 import pages.elements.ProjectPageElements;
 
-public class ProjectPage {
+public class ProjectPage extends BasePage {
     ProjectPageElements projectPageElements;
-    DriverWrapper driver;
 
-    public ProjectPage(WebDriver webDriver){
-        projectPageElements = new ProjectPageElements(webDriver);
-        driver = new DriverWrapper(webDriver);
+    public ProjectPage(WebDriver driver){
+        super(driver);
+        projectPageElements = new ProjectPageElements(driver);
     }
 
     public void verifyProjectIsCreated() {

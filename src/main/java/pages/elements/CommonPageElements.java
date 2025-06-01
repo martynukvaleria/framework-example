@@ -20,7 +20,7 @@ public class CommonPageElements {
     private Alert alertTxt;
     private Button closeAlert;
 
-    public CommonPageElements(WebDriver webDriver){
+    public CommonPageElements(WebDriver webDriver) {
         projectRow = new Label("Project row", reader.getLocator("//commonPage/projectRow"), webDriver);
         createNewProject = new Button("Create new project", reader.getLocator("//commonPage/createNewProject"), webDriver);
         name = new TextField("Name", reader.getLocator("//commonPage/createProject/name"), webDriver);
@@ -55,26 +55,10 @@ public class CommonPageElements {
         return create;
     }
 
-    public Checkbox getPublicAccess() {
-        access.replacePartOfLocator("{value}", "public");
+    public Checkbox getAccess(String value) {
+        access.replacePartOfLocator("{value}", value);
         return access;
     }
-
-    public Checkbox getPrivateAccess() {
-        access.replacePartOfLocator("{value}", "private");
-        return access;    }
-
-    public Checkbox getAllAccess() {
-        access.replacePartOfLocator("{value}", "all");
-        return access;    }
-
-    public Checkbox getGroupAccess() {
-        access.replacePartOfLocator("{value}", "group");
-        return access;    }
-
-    public Checkbox getNoneAccess() {
-        access.replacePartOfLocator("{value}", "none");
-        return access;    }
 
     public Button getProjects() {
         return projects;
