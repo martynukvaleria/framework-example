@@ -24,7 +24,7 @@ public class BaseUiTest {
         configReader = new ConfigReader("src/test/resources/config.properties");
         loginUrl = configReader.get("base_url") + "/login";
 
-        String browserType = configReader.get("browserType");
+        String browserType = configReader.get("browser");
         DriverFactory.createDriver(browserType);
         loginPage = new LoginPage(getDriver());
         commonPage = new CommonPage(getDriver());
