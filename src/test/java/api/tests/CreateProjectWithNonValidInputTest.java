@@ -14,7 +14,7 @@ import java.util.UUID;
 @Listeners(TestListener.class)
 public class CreateProjectWithNonValidInputTest extends BaseApiTest {
 
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test(retryAnalyzer = RetryAnalyzer.class, groups = "api")
     public void createProjectTest() {
         String access = null;
         String accessType = "public";

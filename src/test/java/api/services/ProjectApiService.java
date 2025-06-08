@@ -3,7 +3,7 @@ package api.services;
 import api.models.PatchProjectRequestBody;
 import api.models.PostProjectRequestBody;
 import io.restassured.response.Response;
-import config.ConfigReader;
+import readers.ConfigReader;
 
 import static io.restassured.RestAssured.given;
 
@@ -27,7 +27,7 @@ public class ProjectApiService {
     }
 
     public Response deleteProject(String code) {
-        return given().log().all()
+        return given()
                 .header("Token", token)
                 .contentType("application/json")
                 .when()
@@ -35,7 +35,7 @@ public class ProjectApiService {
     }
 
     public Response editProject(PatchProjectRequestBody projectRequestBody) {
-        return given().log().all()
+        return given()
                 .header("Token", token)
                 .contentType("application/json")
                 .body(projectRequestBody)
@@ -44,7 +44,7 @@ public class ProjectApiService {
     }
 
     public Response getProjects(int limit, int offset) {
-        return given().log().all()
+        return given()
                 .baseUri(baseUri)
                 .header("accept", "application/json")
                 .header("Token", token)

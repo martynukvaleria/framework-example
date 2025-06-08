@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<loginPage>
+    <email>//input[@name="email"]</email>
+    <password>//input[@name="password"]</password>
+    <signIn>//button[@type="submit"]</signIn>
+    <continueWithGoogle>//a[contains(@href, "/google")]</continueWithGoogle>
+    <chooseAccount>//div[contains(text(), "{accName}")]/parent::div</chooseAccount>
+</loginPage>

@@ -11,7 +11,7 @@ import utils.BaseApiTest;
 @Listeners(TestListener.class)
 public class CreateProjectWithValidInputTest extends BaseApiTest {
 
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test(retryAnalyzer = RetryAnalyzer.class, groups = "api")
     public void createProjectTest() {
         PostProjectRequestBody postRequest = createPostProjectRequestBody
                 (null, "public", "TEST", "", null, "Test");
