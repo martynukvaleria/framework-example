@@ -1,5 +1,4 @@
-<suite name="UI parallel Suite" parallel="classes" thread-count="4">
-    <parameter name="browser" value="chrome" />
+<suite name="UI parallel Suite" parallel="classes" thread-count="2">
     <listeners>
         <listener class-name="listeners.TestListener"/>
     </listeners>
