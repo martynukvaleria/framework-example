@@ -34,7 +34,13 @@ public class CommonPage extends BasePage {
     }
 
     public void goBackToCommonPage() {
-        commonPageElements.getProjects().click();
+        try {
+            commonPageElements.getProjects().click();
+        } catch (Exception e) {
+            e.printStackTrace();
+            driverWrapper.refreshPage();
+            commonPageElements.getProjects().click();
+        }
     }
 
     public void deleteProject(String name) {
