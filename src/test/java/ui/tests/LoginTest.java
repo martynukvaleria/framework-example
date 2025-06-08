@@ -7,7 +7,7 @@ public class LoginTest extends BaseUiTest {
 
     @Test(groups = "ui", description = "Verify user can log in with valid credentials")
     public void loginTest() {
-        loginPage.logIn(loginUrl, configReader.get("email"), configReader.get("password"));
+        loginPage.logIn(loginUrl, dotenv.get("EMAIL"), dotenv.get("PASSWORD"));
         commonPage.verifyPageLoaded();
     }
 }

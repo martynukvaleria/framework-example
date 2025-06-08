@@ -1,4 +1,5 @@
 package utils;
+import io.github.cdimascio.dotenv.Dotenv;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -18,13 +19,15 @@ public class BaseUiTest {
     protected LoginPage loginPage;
     protected CommonPage commonPage;
     protected ProjectPage projectPage;
+    protected Dotenv dotenv;
 
     @BeforeMethod
     public void setup() {
+        dotenv = Dotenv.load();
         configReader = new ConfigReader("src/test/resources/config.properties");
-        loginUrl = configReader.get("base_url") + "/login";
+        loginUrl = dotenv.get("BASE_URL") + "/login";
 
-        String browserType = configReader.get("browser");
+        String browserType = dotenv.get("BROWSER");
         DriverFactory.createDriver(browserType);
         loginPage = new LoginPage(getDriver());
         commonPage = new CommonPage(getDriver());

@@ -9,7 +9,7 @@ public class VerifyProjectCanBeDeleted extends BaseUiTest {
 
     @BeforeMethod
     public void setUp() {
-        loginPage.logIn(loginUrl, configReader.get("email"), configReader.get("password"));
+        loginPage.logIn(loginUrl, dotenv.get("EMAIL"), dotenv.get("PASSWORD"));
         name = commonPage.projectName();
     }
 
