@@ -15,7 +15,7 @@ public class VerifyProjectCanBeDeleted extends BaseUiTest {
 
     @Test(groups = "ui", description = "Verify existing project can be deleted")
     public void verifyProjectCanBeDeleted() {
-        String code = "TEST";
+        String code = "TEST1";
         String accessType = "public";
 
         commonPage.verifyPageLoaded();
