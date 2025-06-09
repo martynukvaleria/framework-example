@@ -1,4 +1,4 @@
-<suite name="UI parallel Suite">
+<suite name="UI parallel Suite" parallel="classes" thread-count="2">
     <listeners>
         <listener class-name="listeners.TestListener"/>
     </listeners>
