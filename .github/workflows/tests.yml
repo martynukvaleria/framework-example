@@ -2,9 +2,9 @@ name: tests
 
 on:
   push:
-    branches: [ jenkins-start ]
+    branches: [ main ]
   pull_request:
-    branches: [ jenkins-start ]
+    branches: [ main ]
 
 jobs:
   build:
