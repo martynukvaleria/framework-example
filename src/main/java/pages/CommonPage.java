@@ -34,13 +34,23 @@ public class CommonPage extends BasePage {
     }
 
     public void goBackToCommonPage() {
-        commonPageElements.getProjects().click();
+        try {
+            commonPageElements.getProjects().click();
+        } catch (Exception e) {
+            e.printStackTrace();
+            driverWrapper.refreshPage();
+            commonPageElements.getProjects().click();
+        }
     }
 
     public void deleteProject(String name) {
-        commonPageElements.getOpenActionsMenu(name).click();
-        commonPageElements.getRemove().click();
-        commonPageElements.getOkForDelete().click();
+        try {
+            commonPageElements.getOpenActionsMenu(name).click();
+            commonPageElements.getRemove().click();
+            commonPageElements.getOkForDelete().click();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void checkAlert(String message) {

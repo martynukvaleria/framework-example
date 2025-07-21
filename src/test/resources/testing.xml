@@ -1,0 +1,14 @@
+<suite name="UI parallel Suite" parallel="classes" thread-count="1">
+    <listeners>
+        <listener class-name="listeners.TestListener"/>
+    </listeners>
+    <test name="UI Tests">
+        <classes>
+            <class name="utils.BaseUiTest"/>
+            <class name="ui.tests.LoginTest"/>
+            <class name="ui.tests.CreateProjectWithNonValidInput"/>
+            <class name="ui.tests.CreateProjectWithValidInput"/>
+            <class name="ui.tests.VerifyProjectCanBeDeleted"/>
+        </classes>
+    </test>
+</suite>
