@@ -30,6 +30,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-m2-
 
+      - name: Create .env file
+        run: |
+          echo "API_TOKEN=7e321f4a663e7a4634c6a49921e3bea6e2438bc111ab278fbc68ea649fad5e9d" >> .env
+          echo "BASE_URI=https://api.qase.io/v1/project" >> .env
+          echo "BASE_URL=https://app.qase.io" >> .env
+          echo "BROWSER=chrome" >> .env
+          echo "EMAIL=martyniukvaleriya@gmail.com" >> .env
+          echo "PASSWORD=91=Q7)3!O?gu" >> .env
+
       - name: Run tests via Maven
         run: mvn clean test -Dsurefire.suiteXmlFiles=testsSuites/testing.xml
 
