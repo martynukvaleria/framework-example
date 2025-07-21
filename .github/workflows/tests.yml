@@ -42,7 +42,7 @@ jobs:
       - name: Run tests via Maven
         run: mvn clean test -Dsurefire.suiteXmlFiles=testsSuites/testing.xml
 
-      - name: Upload Allure raw results
+      - name: Upload Allure results
         if: always()
         uses: actions/upload-artifact@v4
         with:
