@@ -22,10 +22,9 @@ public class DriverFactory {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--start-maximized");
             options.addArguments("--disable-notifications");
-
             options.addArguments("--user-data-dir=/tmp/chrome-profile-" + Thread.currentThread().getId());
-
             options.addArguments("--no-sandbox");
+            options.addArguments("--incognito");
             options.addArguments("--disable-dev-shm-usage");
 
             return new ChromeDriver(options);
