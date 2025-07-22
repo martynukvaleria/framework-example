@@ -25,7 +25,7 @@ public class DriverFactory {
             options.addArguments("--incognito");
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
-
+            options.addArguments("--headless=new");
             return new ChromeDriver(options);
         });
 
