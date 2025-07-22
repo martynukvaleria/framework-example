@@ -22,8 +22,8 @@ public class DriverFactory {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--start-maximized");
             options.addArguments("--disable-notifications");
-            options.addArguments("--no-sandbox");
             options.addArguments("--incognito");
+            options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
 
             return new ChromeDriver(options);
